@@ -1,9 +1,17 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pawsitive Impact - Animal Welfare &amp; Justice</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;family=Poppins:wght@300;400;500;600;700&amp;family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pawsitive Impact - Animal Welfare & Justice</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
   <style>
     :root {
       /* Primary colors from logo - refined */
@@ -737,5 +745,946 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686
-</style></head><body></body></html>
+      background: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: -1;
+      border-radius: 30px;
+      opacity: 1;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2.5rem;
+      padding: 0 1.5rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      aspect-ratio: 1/1;
+      transition: all 0.5s ease;
+      cursor: pointer;
+      border: 5px solid rgba(255, 255, 255, 0.7);
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03) translateY(-10px) rotate(1deg);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      z-index: 2;
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.4s ease;
+    }
+
+    .gallery-item:hover .gallery-image {
+      transform: scale(1.1);
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0)
+      );
+      padding: 2rem 1.5rem 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.5s ease;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+
+    .gallery-item:hover .overlay {
+      transform: translateY(0);
+    }
+
+    .overlay p {
+      color: white;
+      margin: 0;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+      font-size: 1.2rem;
+      letter-spacing: 0.02em;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.4s ease 0.1s;
+    }
+
+    .gallery-item:hover .overlay p {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Donation Tracker - Enhanced */
+    .donation-tracker {
+      padding: 6rem 0;
+      background-color: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 30px;
+      margin: 3rem 2rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      animation: fadeIn 1.5s ease-out;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .donation-tracker::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264.888-.14 1.645-1.585 2.629-4.678 2.629-7.32 0-4.942-4.153-8.97-9.28-8.97-5.128 0-9.28 4.028-9.28 8.97 0 2.642.984 5.735 2.628 7.32.168.12.53.254.888.4 1.406.55 2.94.922 4.551 1.027 1.628.106 3.306-.345 4.76-1.423.173-.147.335-.304.575-.304.364 0 .34.257.764.577.696.574 1.587 1.027 2.754 1.15 2.16.226 3.912-.1 5.112-1.28.177-.138.442-.536.442-.712 0-.32-.196-.55-.7-.76-.124-.052-.267-.083-.387-.124l-.005-.002zm-3.95 8.627c3.582.075 6.36-4.13 6.36-9.283 0-5.12-2.77-9.29-6.138-9.38-3.368-.087-6.138 4.083-6.138 9.208-.124 5.21 2.602 9.38 5.915 9.456zM40.184 20c.366-.13.72-.264.887-.14 1.645-1.585 2.63-4.678 2.63-7.32 0-4.942-4.153-8.97-9.28-8.97-5.128 0-9.28 4.028-9.28 8.97 0 2.642.983 5.735 2.627 7.32.17.123.53.257.89.403 1.404.55 2.938.922 4.55 1.027 1.628.106 3.306-.345 4.76-1.423.174-.147.336-.304.576-.304.363 0 .342.257.765.577.696.574 1.586 1.027 2.754 1.15 2.16.226 3.912-.1 5.112-1.28.178-.138.442-.536.442-.712 0-.32-.196-.55-.7-.76-.124-.052-.267-.083-.386-.124l-.006-.002zm-3.952 8.627c3.583.075 6.36-4.13 6.36-9.283 0-5.12-2.77-9.29-6.137-9.38-3.367-.087-6.14 4.083-6.14 9.208-.12 5.21 2.604 9.38 5.917 9.456zM59.185 20c.365-.13.72-.264.886-.14 1.644-1.585 2.63-4.678 2.63-7.32 0-4.942-4.152-8.97-9.28-8.97-5.127 0-9.28 4.028-9.28 8.97 0 2.642.984 5.735 2.628 7.32.17.123.53.257.89.403 1.403.55 2.936.922 4.55 1.027 1.627.106 3.305-.345 4.76-1.423.173-.147.335-.304.575-.304.363 0 .34.257.764.577.697.574 1.585 1.027 2.755 1.15 2.16.226 3.91-.1 5.11-1.28.18-.138.443-.536.443-.712 0-.32-.196-.55-.7-.76-.124-.052-.266-.083-.386-.124l-.006-.002zm-3.952 8.627c3.582.075 6.36-4.13 6.36-9.283 0-5.12-2.77-9.29-6.138-9.38-3.368-.087-6.14 4.083-6.14 9.208-.12 5.21 2.604 9.38 5.917 9.456zM78.187 20c.363-.13.72-.264.886-.14 1.643-1.585 2.63-4.678 2.63-7.32 0-4.942-4.153-8.97-9.28-8.97-5.127 0-9.28 4.028-9.28 8.97 0 2.642.984 5.735 2.628 7.32.17.123.53.257.89.403 1.403.55 2.935.922 4.55 1.027 1.627.106 3.305-.345 4.76-1.423.172-.147.334-.304.574-.304.362 0 .34.257.764.577.7.574 1.585 1.027 2.755 1.15 2.16.226 3.91-.1 5.11-1.28.18-.138.445-.536.445-.712 0-.32-.198-.55-.702-.76-.123-.052-.265-.083-.385-.124l-.005-.002zm-3.953 8.627c3.582.075 6.36-4.13 6.36-9.283 0-5.12-2.77-9.29-6.137-9.38-3.37-.087-6.14 4.083-6.14 9.208-.12 5.21 2.603 9.38 5.917 9.456z' fill='%2390d1c7' fill-rule='nonzero' fill-opacity='.1'/%3E%3C/svg%3E");
+      z-index: -1;
+      border-radius: 30px;
+      opacity: 0.8;
+    }
+
+    .tracker-container {
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    .tracker-bar {
+      height: 45px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .progress {
+      height: 100%;
+      background: linear-gradient(to right, var(--orange), #ffb18c, var(--blue));
+      border-radius: 50px;
+      width: 0%;
+      transition: width 2.5s cubic-bezier(0.65, 0, 0.35, 1);
+      position: relative;
+    }
+
+    .progress::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0) 25%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        rgba(255, 255, 255, 0) 75%
+      );
+      background-size: 200% 100%;
+      animation: shine 2s infinite linear;
+    }
+
+    .tracker-info {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0 0.5rem;
+    }
+
+    .current-amount {
+      color: var(--dark-blue);
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+
+    .current-amount::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--blue);
+      border-radius: 2px;
+    }
+
+    /* Footer - Fixed and Enhanced */
+    footer {
+      background: var(--footer-gradient);
+      background-size: 400% 400%;
+      animation: footerGradientBG 18s ease infinite;
+      color: white;
+      padding-top: 3rem;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 -15px 35px rgba(0, 0, 0, 0.1);
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--orange), var(--blue), var(--green));
+      opacity: 0.8;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 1rem 3rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .footer-logo {
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-logo .logo-img {
+      width: 65px;
+      height: 65px;
+      margin-bottom: 1rem;
+      margin-right: 0;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-logo .logo-name {
+      font-family: "Pacifico", cursive;
+      font-size: 1.8rem;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      display: block;
+    }
+
+    .footer-content p {
+      max-width: 650px;
+      margin-bottom: 2.5rem;
+      color: var(--white);
+      font-size: 1.1rem;
+      line-height: 1.9;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      color: white;
+    }
+
+    .contact-item i {
+      font-size: 1.2rem;
+      margin-right: 0.8rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Instagram Button - Enhanced */
+    .instagram-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      background: var(--instagram-gradient);
+      border-radius: 50px;
+      transition: all 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 8px 20px rgba(220, 39, 67, 0.3);
+      margin-bottom: 1.5rem;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .instagram-link:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(220, 39, 67, 0.4);
+    }
+
+    .instagram-link::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: left 0.5s;
+      transform: skewX(-30deg);
+    }
+
+    .instagram-link:hover::before {
+      left: 100%;
+    }
+
+    .instagram-link i {
+      font-size: 1.3rem;
+    }
+
+    .footer-bottom {
+      width: 100%;
+      padding: 1.5rem 0;
+      background-color: rgba(0, 0, 0, 0.2);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .credits {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.03em;
+      margin: 0;
+    }
+
+    /* Back to Top Button - Enhanced */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--dark-blue), var(--blue));
+      color: #ffffff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 150;
+      opacity: 0;
+      visibility: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top i {
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(135deg, var(--blue), var(--dark-blue));
+    }
+
+    .back-to-top:hover i {
+      transform: translateY(-3px);
+    }
+
+    /* Animations - Enhanced */
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate(40px, 30px) rotate(8deg);
+      }
+      100% {
+        transform: translate(-30px, 15px) rotate(-8deg);
+      }
+    }
+
+    @keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes borderGlow {
+      0%, 100% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes footerGradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Responsive Design - Improved for Mobile */
+    @media (max-width: 992px) {
+      html {
+        font-size: 15px;
+      }
+      
+      .about, .gallery, .donation-tracker {
+        margin: 2rem 1rem;
+        padding: 4rem 0;
+      }
+      
+      .hero-content {
+        padding: 3rem;
+        max-width: 90%;
+      }
+      
+      .about-text {
+        flex-direction: column;
+      }
+      
+      .about-image {
+        margin: 0 auto 2rem;
+      }
+      
+      h1 {
+        font-size: 3.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      html {
+        font-size: 14px;
+      }
+      
+      body {
+        width: 100%;
+        overflow-x: hidden;
+      }
+      
+      header {
+        padding: 0.8rem 5%;
+      }
+      
+      .header-container {
+        flex-direction: row;
+      }
+      
+      /* Mobile Menu Button Display */
+      .menu-toggle {
+        display: flex;
+      }
+      
+      /* Mobile Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 100;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      nav.active {
+        right: 0;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+      }
+      
+      nav ul li {
+        margin: 1.5rem 0;
+      }
+      
+      nav ul li a {
+        font-size: 1.2rem;
+        padding: 0.8rem 0;
+        display: block;
+      }
+      
+      .overlay-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+      }
+      
+      .overlay-menu.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero-content {
+        padding: 2.5rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .about-icons {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .icon-item {
+        min-width: 0;
+        width: 100%;
+        padding: 2rem;
+      }
+      
+      .footer-contact {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+      }
+      
+      /* Improved shape positioning for mobile */
+      .shape {
+        opacity: 0.4;
+      }
+      
+      .shape-1, .shape-2, .shape-3, .shape-4, .shape-5 {
+        width: 80%;
+        height: auto;
+        aspect-ratio: 1/1;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      html {
+        font-size: 13px;
+      }
+      
+      body {
+        padding: 0;
+      }
+      
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      
+      .hero-content {
+        padding: 2rem;
+      }
+      
+      .about, .gallery, .donation-tracker {
+        padding: 3rem 0;
+        margin: 1.5rem 0.5rem;
+        border-radius: 20px;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+        padding: 0 1rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .tracker-info {
+        font-size: 0.9rem;
+      }
+      
+      .cta-button {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+      }
+      
+      .about-image {
+        min-width: 200px;
+        height: 200px;
+      }
+      
+      .icon-item i {
+        font-size: 3rem;
+      }
+      
+      .logo-img {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .instagram-link {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-bg">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+    <div class="shape shape-5"></div>
+  </div>
+
+  <header>
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="/images/logo.png" alt="Pawsitive Impact Logo" class="logo-img">
+        <div class="logo-name">Pawsitive Impact</div>
+      </div>
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav id="mobileNav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us & Goals</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li>
+            <a
+              href="https://www.instagram.com/pawsitiveimpactcp"
+              target="_blank"
+              >Instagram</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <div class="overlay-menu" id="overlayMenu"></div>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Pawsitive Impact</h1>
+      <p>
+        help us ono our mission to create a more compassionate world for all animals
+        through education, advocacy, and community action.
+      </p>
+      <a href="#about" class="cta-button">Learn More</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Us & Our Goals</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <div class="about-description">
+            <h3>Our Mission</h3>
+            <p>
+              Pawsitive Impact is dedicated to <span class="highlight">securing justice for animals</span> and promoting comprehensive animal welfare. We believe every animal deserves respectful treatment and proper care, and work tirelessly to make this vision a reality through community engagement and education.
+            </p>
+            <p>
+              Our research revealed that countless dogs and cats suffer on the streets due to neglect and abandonment. Organizations like <span class="highlight">Hong Kong Dog Rescue</span> have been making a remarkable difference by providing safe havens for these animals until they find forever homes.
+            </p>
+            <p>
+              Inspired by their success, we've collaborated with them to amplify our impact through volunteer work, fundraising campaigns, and educational initiatives via social media and community events.
+            </p>
+          </div>
+        </div>
+        
+        <div class="about-mission">
+          <div class="mission-title">
+            <i class="fas fa-heart"></i>
+            <h4>Our Vision</h4>
+          </div>
+          <p class="mission-text">
+            "To create an informed and compassionate community where every donation, every volunteer hour, and every shared story contributes to lasting improvements in animal welfare."
+          </p>
+        </div>
+        
+        <div class="about-icons">
+          <div class="icon-item">
+            <i class="fas fa-hands-helping"></i>
+            <h3>Support</h3>
+            <p>We will provide assistance to HKDR through donations and volunteer hours.</p>
+          </div>
+          <div class="icon-item">
+            <i class="fas fa-heart"></i>
+            <h3>Care</h3>
+            <p>We will assist HKDR to ensure that rescued animals receive the medical attention, nutrition, and love they need to thrive.</p>
+          </div>
+          <div class="icon-item">
+            <i class="fas fa-bullhorn"></i>
+            <h3>Advocacy</h3>
+            <p>We will advocate for stronger animal protection laws and educate students about responsible pet ownership.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="/images/image1.png" alt="HKDR" class="gallery-image">
+          <div class="overlay">
+            <p>HKDR</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/image2.png" alt="HKDR" class="gallery-image">
+          <div class="overlay">
+            <p>HKDR</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/image3.png" alt="HKDR" class="gallery-image">
+          <div class="overlay">
+            <p>HKDR</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/image4.png" alt="HKDR" class="gallery-image">
+          <div class="overlay">
+            <p>HKDR</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/image5.png" alt="HKDR" class="gallery-image">
+          <div class="overlay">
+            <p>HKDR</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/image6.png" alt="HKDR" class="gallery-image">
+          <div class="overlay">
+            <p>HKDR</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="donation-tracker">
+    <div class="container">
+      <h2>Fundraising Goal: 1,000 HKD</h2>
+      <div class="tracker-container">
+        <div class="tracker-bar">
+          <div class="progress" data-progress="0"></div>
+        </div>
+        <div class="tracker-info">
+          <p>Current: <span class="current-amount">0</span> HKD</p>
+          <p>Goal: 1,000 HKD</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="/images/logo.png" alt="Pawsitive Impact Logo" class="logo-img">
+          <div class="logo-name">Pawsitive Impact</div>
+        </div>
+        <p>
+          Our mission is to ensure every animal receives the love, care, and respect they deserve.
+          Help us make a difference in the lives of animals in need.
+        </p>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>ELCHK Lutheran Academy</span>
+          </div>
+        </div>
+        <a href="https://www.instagram.com/pawsitiveimpactcp" target="_blank" class="instagram-link">
+          <i class="fab fa-instagram"></i> Follow us on Instagram
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="credits">by Jackson Wong, Moses Wong and Kingsley Wong from 9IJ</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileNav = document.getElementById("mobileNav");
+      const overlayMenu = document.getElementById("overlayMenu");
+      
+      menuToggle.addEventListener("click", function() {
+        menuToggle.classList.toggle("active");
+        mobileNav.classList.toggle("active");
+        overlayMenu.classList.toggle("active");
+        document.body.classList.toggle("menu-open");
+      });
+      
+      overlayMenu.addEventListener("click", function() {
+        menuToggle.classList.remove("active");
+        mobileNav.classList.remove("active");
+        overlayMenu.classList.remove("active");
+        document.body.classList.remove("menu-open");
+      });
+      
+      document.querySelectorAll("nav ul li a").forEach(link => {
+        link.addEventListener("click", function() {
+          if (window.innerWidth <= 768) {
+            menuToggle.classList.remove("active");
+            mobileNav.classList.remove("active");
+            overlayMenu.classList.remove("active");
+            document.body.classList.remove("menu-open");
+          }
+        });
+      });
+
+      // Improved donation tracker animation
+      const progressBar = document.querySelector(".progress");
+      const currentAmount = document.querySelector(".current-amount");
+      const progressValue = parseInt(progressBar.getAttribute("data-progress"));
+      const currentValue = parseInt(currentAmount.textContent);
+      const goal = 1000; // Hardcoded goal from HTML
+      
+      // Calculate percentage based on current amount and goal
+      const calculatedProgress = (currentValue / goal) * 100;
+      
+      // Animate progress bar
+      setTimeout(() => {
+        progressBar.style.width = `${calculatedProgress}%`;
+      }, 500);
+
+      // Smooth scrolling for internal navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document
+            .querySelector(this.getAttribute("href"))
+            .scrollIntoView({ behavior: "smooth" });
+        });
+      });
+
+      // Sticky header effect
+      const header = document.querySelector("header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("sticky");
+        } else {
+          header.classList.remove("sticky");
+        }
+      });
+
+      // Back to Top functionality
+      const backToTop = document.getElementById("backToTop");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>
+</body>
+</html>
