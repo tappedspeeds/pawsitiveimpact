@@ -1558,20 +1558,20 @@
     </div>
   </section>
 
-  <section class="donation-tracker">
-    <div class="container">
-      <h2>Fundraising Goal: 1,000 HKD</h2>
-      <div class="tracker-container">
-        <div class="tracker-bar">
-          <div class="progress" data-progress="0"></div>
-        </div>
-        <div class="tracker-info">
-          <p>Current: <span class="current-amount">0</span> HKD</p>
-          <p>Goal: 1,000 HKD</p>
-        </div>
+<section class="donation-tracker">
+  <div class="container">
+    <h2>Fundraising Goal: 1,000 HKD - Goal Exceeded!</h2>
+    <div class="tracker-container">
+      <div class="tracker-bar">
+        <div class="progress" data-progress="110"></div>
+      </div>
+      <div class="tracker-info">
+        <p>Current: <span class="current-amount">1100</span> HKD</p>
+        <p>Goal: 1,000 HKD</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <footer>
     <div class="container">
@@ -1637,20 +1637,20 @@
         });
       });
 
-      // Improved donation tracker animation
-      const progressBar = document.querySelector(".progress");
-      const currentAmount = 1100;
-      const progressValue = parseInt(progressBar.getAttribute("data-progress"));
-      const currentValue = parseInt(currentAmount.textContent);
-      const goal = 1000; // Hardcoded goal from HTML
-      
-      // Calculate percentage based on current amount and goal
-      const calculatedProgress = (currentValue / goal) * 100;
-      
-      // Animate progress bar
-      setTimeout(() => {
-        progressBar.style.width = `${calculatedProgress}%`;
-      }, 500);
+// Improved donation tracker animation
+const progressBar = document.querySelector(".progress");
+const currentAmount = document.querySelector(".current-amount");
+const progressValue = parseInt(progressBar.getAttribute("data-progress"));
+const currentValue = parseInt(currentAmount.textContent);
+const goal = 1000; // Hardcoded goal from HTML
+
+// Calculate percentage based on current amount and goal
+const calculatedProgress = Math.min((currentValue / goal) * 100, 110); // Cap at 110% for display purposes
+
+// Animate progress bar
+setTimeout(() => {
+  progressBar.style.width = `${calculatedProgress}%`;
+}, 500);
 
       // Smooth scrolling for internal navigation
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
